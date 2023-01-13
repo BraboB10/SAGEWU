@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import { StyleSheet, TouchableOpacity, FlatList, Button, Image, View, SafeAreaView, Text, Alert, ScrollView } from "react-native";
 import AnimatedLinearGradient, {presetColors} from './AnimatedGradient'
+import database from '@react-native-firebase/database';
+const db = database();
+const ref = db.ref('/Events');
 
 const Seperator = () => {
   return <View style={styles.seperator} />;
@@ -11,16 +14,19 @@ class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-    {id:1, title: "Weekly Social", description:"Our weekly meeting where we talk about stuff and play games",    date:"Every Thursday 11am-12pm", location:"Digs 223", image:"https://cdn.discordapp.com/attachments/936340397045719061/1023424896451223552/SAGE_Banner.png"}, 
-    {id:2, title: "Tabling Event", description:"Hang out and learn about gay stuff and resources!",  date:"Oct 2nd - Oct 7th", location:"Digs Main Lobby", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk6Css2tMRljoAoWui4SMuYLjbwEL24izJHMiO9X6e&s"} ,
-    {id:3, title: "Dr. Collins Cultural Event", description:"Cultural Event", date:"Oct 6th 11am-12pm", location:"Owens G01",   image:"https://cdn.discordapp.com/attachments/936340397045719061/1023424896451223552/SAGE_Banner.png"}, 
-    {id:4, title: "BIG Social", description:"Hang out with us and play games while we wrap up SAGE week!", date:"Oct 7th 12pm - 4pm", location:"Owens 223", image:"https://cdn.discordapp.com/attachments/936340397045719061/1023424896451223552/SAGE_Banner.png"}, 
-    {id:5, title: "Sexuality of Color: Cultural Event", description:"NAACP and SAGE Co-organized Cultural Event!", date:"Oct 12 6:30pm - 8pm", location:"Richardson Ballroom",  image:"https://cdn.discordapp.com/attachments/936340397045719061/1023424896451223552/SAGE_Banner.png"}, 
-    {id:6, title: "Culture Club Event", description:"Culture Club Mixer!",   date:"Oct 12th 7:30 pm - 9pm", location:"Digs 114",  image:"https://cdn.discordapp.com/attachments/936340397045719061/1023424896451223552/SAGE_Banner.png"}, 
-  ]
-    };
-  }
+        data: []
+    }
+}
+componentDidMount() {
+  ref.on('value', snapshot => {
+    let data = [];
+            snapshot.forEach((childSnapshot) => {
+                data.push(childSnapshot.val());
+            });
+            this.setState({ data });
+            console.log(this.state.data);
+  });
+}
   
   
   render() {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "374175399426",
+    "project_id": "sagewu-b8626",
+    "storage_bucket": "sagewu-b8626.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374175399426:android:a1e746c79ea9832208f11b",
+        "android_client_info": {
+          "package_name": "com.sagewu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374175399426-hkj76ji9q366h13q7crat8lirfufff7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBKy-y-5IQyjQuCDT3OeGYur4Zg_8xbYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374175399426-hkj76ji9q366h13q7crat8lirfufff7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
